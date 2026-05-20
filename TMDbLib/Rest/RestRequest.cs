@@ -160,7 +160,7 @@ internal class RestRequest
         {
             foreach (var pair in _urlSegment)
             {
-                endpoint = endpoint.Replace("{" + pair.Key + "}", pair.Value, StringComparison.OrdinalIgnoreCase);
+                endpoint = endpoint.Replace("{" + pair.Key + "}", pair.Value);
             }
         }
 
@@ -212,7 +212,7 @@ internal class RestRequest
 
             if (isJson)
             {
-                statusMessage = JsonConvert.DeserializeObject<TMDbStatusMessage>(await resp.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
+                statusMessage = JsonConvert.DeserializeObject<TMDbStatusMessage>(await resp.Content.ReadAsStringAsync().ConfigureAwait(false));
             }
             else
             {

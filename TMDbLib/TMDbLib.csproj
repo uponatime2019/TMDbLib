@@ -2,11 +2,16 @@
 
   <PropertyGroup>
     <Authors>LordMike;Naliath;Jellyfin Contributors</Authors>
-    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>TMDbLib</AssemblyName>
-    <PackageId>TMDbLib</PackageId>
+    <PackageId>TmdbLib_Std2</PackageId>
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <Nullable>enable</Nullable>
+    <MinVerOverride>3.0.0</MinVerOverride>
+    <Description>TMDbLib by LordMike, Naliath, and Jellyfin Contributors - .NET Standard 2.0 build</Description>
+    <PackageProjectUrl>https://github.com/uponatime2019/TMDbLib</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/uponatime2019/TMDbLib</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <!-- Analyzers -->

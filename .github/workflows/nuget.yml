@@ -1,9 +1,7 @@
 name: Nuget push (tag)
 
-on: 
-  push:
-    tags:
-    - 'v*'
+on:
+  workflow_dispatch:
 
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true

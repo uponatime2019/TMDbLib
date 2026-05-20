@@ -21,7 +21,10 @@ public partial class TMDbClient
         }
 
         // Movie Id is expected by the API and can not be null
-        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(movieId);
+        if (movieId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(movieId), "Movie ID must be greater than zero.");
+        }
 
         RestRequest req = _client.Create("list/{listId}/{method}");
         req.AddUrlSegment("listId", listId);
@@ -81,7 +84,10 @@ public partial class TMDbClient
             throw new ArgumentNullException(nameof(listId));
         }
 
-        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(movieId);
+        if (movieId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(movieId), "Movie ID must be greater than zero.");
+        }
 
         var req = _client.Create("list/{listId}/item_status");
         req.AddUrlSegment("listId", listId);

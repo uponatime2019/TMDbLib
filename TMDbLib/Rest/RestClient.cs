@@ -27,10 +27,9 @@ internal sealed class RestClient : IDisposable
 
         if (httpMessageHandler is null)
         {
-            var handler = new SocketsHttpHandler
+            var handler = new HttpClientHandler
             {
-                AutomaticDecompression = DecompressionMethods.All,
-                ConnectCallback = HappyEyeballsCallback.ConnectAsync
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
             };
 
             if (proxy is not null)
@@ -60,7 +59,10 @@ internal sealed class RestClient : IDisposable
 
         set
         {
-            ArgumentOutOfRangeException.ThrowIfNegative(value);
+            if (value < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(value), "Max retry count cannot be negative.");
+            }
 
             _maxRetryCount = value;
         }

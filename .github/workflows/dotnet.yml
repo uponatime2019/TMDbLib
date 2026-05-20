@@ -1,11 +1,7 @@
 name: Build and Test
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-    types: [ opened, synchronize, reopened ]
+  workflow_dispatch:
 
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true

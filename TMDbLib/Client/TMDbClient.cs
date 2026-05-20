@@ -249,7 +249,7 @@ public partial class TMDbClient : IDisposable
         using var response = await _client.HttpClient.GetAsync(url, HttpCompletionOption.ResponseContentRead, token).ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadAsByteArrayAsync(token).ConfigureAwait(false);
+        return await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
     }
 
     private void Initialize(string baseUrl, bool useSsl, string apiKey)
